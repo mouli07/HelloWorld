@@ -44,7 +44,7 @@ pipeline {
 
                                     sh """(
 									
-                                   
+									 cd src/gateway/HelloWorld
 									 sleep 20
 									 APP_STATUSCODE=\$(curl -X OPTIONS --silent --output /dev/stderr --write-out "%{http_code}" http://riddhithacker-eval-test.apigee.net/weatherapi/)
 									 if [ "\$APP_STATUSCODE" -eq 200 ]
