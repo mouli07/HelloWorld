@@ -38,7 +38,7 @@ pipeline {
 
             }
         }
- stage('Mock url and Deploy to Prod') {
+ stage('Mock url') {
             steps { 
      
 
@@ -49,7 +49,7 @@ pipeline {
 									 APP_STATUSCODE=\$(curl -X OPTIONS --silent --output /dev/stderr --write-out "%{http_code}" http://riddhithacker-eval-test.apigee.net/weatherapi/)
 									 if [ "\$APP_STATUSCODE" -eq 200 ]
 									 then
-									 mvn install -X -Pprod -Dusername=riddhi_thacker@yahoo.com -Dpassword=Ridz94_@
+									  echo "API is up and running"
 									 else
 									 echo "API validation failed"
 									 exit 1
@@ -59,7 +59,23 @@ pipeline {
                                 
 
             }
-        }               
+        } 
+  stage('Deploy to Prod') {
+            steps { 
+     
+
+                                    sh """(
+									
+									 cd src/gateway/HelloWorld
+									 
+									 mvn install -X -Pprod -Dusername=riddhi_thacker@yahoo.com -Dpassword=Ridz94_@
+									 
+                                    )"""
+                                
+                                
+
+            }
+        }
         
     }
     
