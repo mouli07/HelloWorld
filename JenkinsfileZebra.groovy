@@ -30,7 +30,7 @@ pipeline {
      
 
                                     sh """(
-									 cd src\gateway\HelloWorld
+									 cd src/gateway/HelloWorld
                                      mvn install -X -Ptest -Dusername=riddhi_thacker@yahoo.com -Dpassword=Ridz94_@
                                     )"""
                                 
@@ -43,7 +43,7 @@ pipeline {
      
 
                                     sh """(
-									 cd src\gateway\HelloWorld
+									
                                    
 									 sleep 20
 									 APP_STATUSCODE=\$(curl -X OPTIONS --silent --output /dev/stderr --write-out "%{http_code}" http://riddhithacker-eval-test.apigee.net/weatherapi/)
